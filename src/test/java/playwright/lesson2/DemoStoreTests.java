@@ -21,7 +21,7 @@ public class DemoStoreTests {
         }
 
         @Test
-        public void testSomething() {
+        public void headerTest() {
             BrowserContext context = setup.getContext();
             Page page = setup.getBrowser().newPage();
             page.navigate("https://demoblaze.com/");
@@ -29,7 +29,7 @@ public class DemoStoreTests {
 
             // Wait for the element to be visible
             headerLocator.waitFor(new Locator.WaitForOptions().setTimeout(5000));
-
+            page.pause();
             // Verify the header text
             String headerText = headerLocator.textContent();
             System.out.println("Header Text: " + headerText);

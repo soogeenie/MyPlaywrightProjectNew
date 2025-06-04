@@ -50,6 +50,7 @@ public class CrossBrowserTest {
         Locator headerLocator = page.locator("#nava");
         headerLocator.waitFor(new Locator.WaitForOptions().setTimeout(5000));
         String headerText = headerLocator.textContent();
+        page.pause();
         Assertions.assertEquals("PRODUCT STORE", headerText.trim());
     }
 }

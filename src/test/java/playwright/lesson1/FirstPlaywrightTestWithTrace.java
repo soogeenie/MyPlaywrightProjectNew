@@ -1,6 +1,8 @@
 package playwright.lesson1;
 
 import com.microsoft.playwright.*;
+import com.microsoft.playwright.options.AriaRole;
+
 import java.nio.file.Paths;
 import java.util.Arrays;
 
@@ -43,10 +45,17 @@ public class FirstPlaywrightTestWithTrace {
         }
 
         assertThat(headerLocator).hasText("PRODUCT STORE");
-
-//        page.locator("text=Samsung galaxy s6").click();
-//        page.locator("text=Add to cart").click();
-        // Stop tracing and save the trace to a file
+        page.getByRole(AriaRole.LINK, new Page.GetByRoleOptions().setName("Samsung galaxy s6")).click();
+//        page.onceDialog(dialog -> {
+//                    System.out.println(String.format("Dialog message: %s", dialog.message()));
+//                    dialog.dismiss();
+//                });
+        page.getByRole(AriaRole.LINK, new Page.GetByRoleOptions().setName("Add to cart")).click();
+//        page.onceDialog(dialog -> {
+//                    System.out.println(String.format("Dialog message: %s", dialog.message()));
+//                    dialog.dismiss();
+//                });
+//              // Stop tracing and save the trace to a file
         context.tracing().stop(new Tracing.StopOptions()
                 .setPath(Paths.get("trace.zip")));
 
