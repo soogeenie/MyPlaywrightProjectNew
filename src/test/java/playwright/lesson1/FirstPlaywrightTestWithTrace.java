@@ -46,15 +46,9 @@ public class FirstPlaywrightTestWithTrace {
 
         assertThat(headerLocator).hasText("PRODUCT STORE");
         page.getByRole(AriaRole.LINK, new Page.GetByRoleOptions().setName("Samsung galaxy s6")).click();
-//        page.onceDialog(dialog -> {
-//                    System.out.println(String.format("Dialog message: %s", dialog.message()));
-//                    dialog.dismiss();
-//                });
+
         page.getByRole(AriaRole.LINK, new Page.GetByRoleOptions().setName("Add to cart")).click();
-//        page.onceDialog(dialog -> {
-//                    System.out.println(String.format("Dialog message: %s", dialog.message()));
-//                    dialog.dismiss();
-//                });
+
 //              // Stop tracing and save the trace to a file
         context.tracing().stop(new Tracing.StopOptions()
                 .setPath(Paths.get("trace.zip")));
