@@ -4,6 +4,7 @@ import com.microsoft.playwright.*;
 
 public class FirstPlaywrightTest {
     public static void main(String[] args) {
+//        added comment
             Playwright playwright = Playwright.create();
             Browser browser = playwright.firefox().launch(new BrowserType.LaunchOptions().setHeadless(false));
             Page page = browser.newPage();
