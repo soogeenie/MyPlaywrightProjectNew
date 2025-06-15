@@ -1,12 +1,11 @@
-package playwright.lesson1;
+package playwright.lesson2;
 
 import com.microsoft.playwright.*;
 
 public class FirstPlaywrightTest {
     public static void main(String[] args) {
-//        added comment
             Playwright playwright = Playwright.create();
-            Browser browser = playwright.firefox().launch(new BrowserType.LaunchOptions().setHeadless(false));
+            Browser browser = playwright.chromium().launch(new BrowserType.LaunchOptions().setHeadless(false));
             Page page = browser.newPage();
             page.navigate("https://demoblaze.com/");
 

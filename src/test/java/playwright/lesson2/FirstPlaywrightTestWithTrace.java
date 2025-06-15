@@ -1,4 +1,4 @@
-package playwright.lesson1;
+package playwright.lesson2;
 
 import com.microsoft.playwright.*;
 import com.microsoft.playwright.options.AriaRole;
@@ -30,26 +30,17 @@ public class FirstPlaywrightTestWithTrace {
         // Locate the element by ID
         Locator headerLocator = page.locator("#nava");
 
-        // Wait for the element to be visible
-        headerLocator.waitFor(new Locator.WaitForOptions().setTimeout(5000));
-
         // Verify the header text
-        String headerText = headerLocator.textContent();
-        System.out.println("Header Text: " + headerText);
-
-        // Assert the header text
-        if (headerText.trim().equals("PRODUCT STORE")) {
-            System.out.println("Header verification passed.");
-        } else {
-            System.out.println("Header verification failed.");
-        }
-
         assertThat(headerLocator).hasText("PRODUCT STORE");
+
+        //click "Samsung galaxy s6" and verify the btn "Add to cart"
         page.getByRole(AriaRole.LINK, new Page.GetByRoleOptions().setName("Samsung galaxy s6")).click();
 
-        page.getByRole(AriaRole.LINK, new Page.GetByRoleOptions().setName("Add to cart")).click();
+        // Verify btn text
+        Locator addToCartBtnLocator = page.getByRole(AriaRole.LINK, new Page.GetByRoleOptions().setName("Add to cart"));
+        assertThat(addToCartBtnLocator).hasText("Add to cart");
 
-//              // Stop tracing and save the trace to a file
+        // Stop tracing and save the trace to a file
         context.tracing().stop(new Tracing.StopOptions()
                 .setPath(Paths.get("trace.zip")));
 
