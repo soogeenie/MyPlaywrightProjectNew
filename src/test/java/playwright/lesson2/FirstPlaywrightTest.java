@@ -4,7 +4,8 @@ import com.microsoft.playwright.*;
 
 public class FirstPlaywrightTest {
     public static void main(String[] args) {
-            Playwright playwright = Playwright.create();
+        // Add a comment
+        Playwright playwright = Playwright.create();
             Browser browser = playwright.chromium().launch(new BrowserType.LaunchOptions().setHeadless(false));
             Page page = browser.newPage();
             page.navigate("https://demoblaze.com/");
