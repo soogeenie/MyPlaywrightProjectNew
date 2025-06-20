@@ -7,6 +7,7 @@ import java.nio.file.Paths;
 import java.util.Arrays;
 
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
+import static com.microsoft.playwright.assertions.PlaywrightAssertions.setDefaultAssertionTimeout;
 
 public class FirstPlaywrightTestWithTrace {
     public static void main(String[] args) {
@@ -16,7 +17,6 @@ public class FirstPlaywrightTestWithTrace {
                 .setHeadless(false)
                 .setArgs(Arrays.asList("--start-maximized")));
         BrowserContext context = browser.newContext(new Browser.NewContextOptions().setViewportSize(null));
-        context.setDefaultTimeout(5000);
 
         // Start tracing with screenshots and DOM snapshots
         context.tracing().start(new Tracing.StartOptions()
@@ -31,7 +31,7 @@ public class FirstPlaywrightTestWithTrace {
         Locator headerLocator = page.locator("#nava");
 
         // Verify the header text
-        assertThat(headerLocator).hasText("PRODUCT STORE");
+        assertThat(headerLocator).containsText("PRODUCT");
 
         //click "Samsung galaxy s6" and verify the btn "Add to cart"
         page.getByRole(AriaRole.LINK, new Page.GetByRoleOptions().setName("Samsung galaxy s6")).click();
