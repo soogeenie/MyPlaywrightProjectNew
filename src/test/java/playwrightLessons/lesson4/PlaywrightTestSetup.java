@@ -2,7 +2,6 @@ package playwrightLessons.lesson4;
 
 import com.microsoft.playwright.*;
 
-import java.nio.file.Paths;
 import java.util.Arrays;
 
 public class PlaywrightTestSetup {
@@ -18,7 +17,7 @@ public class PlaywrightTestSetup {
                 .setArgs(Arrays.asList("--start-maximized")));
         this.context = this.browser.newContext(new Browser.NewContextOptions()
                 .setViewportSize(null));
-        this.page = this.browser.newPage();
+        this.page = this.context.newPage();
         return this;
     }
     public Page getPage(){return this.page;}
