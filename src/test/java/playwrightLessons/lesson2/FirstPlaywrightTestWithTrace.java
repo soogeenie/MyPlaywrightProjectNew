@@ -1,4 +1,4 @@
-package playwright.lesson2;
+package playwrightLessons.lesson2;
 
 import com.microsoft.playwright.*;
 import com.microsoft.playwright.options.AriaRole;
@@ -7,7 +7,6 @@ import java.nio.file.Paths;
 import java.util.Arrays;
 
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
-import static com.microsoft.playwright.assertions.PlaywrightAssertions.setDefaultAssertionTimeout;
 
 public class FirstPlaywrightTestWithTrace {
     public static void main(String[] args) {
