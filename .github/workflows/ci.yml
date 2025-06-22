@@ -21,7 +21,7 @@ jobs:
 #          npx playwright install --with-deps
 
       - name: Run Maven tests
-        run: mvn test
+        run: mvn surefire-report:report
 
       - name: Upload test reports as artifacts
         uses: actions/upload-artifact@v4
