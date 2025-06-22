@@ -1,0 +1,20 @@
+stages:
+  - test
+
+variables:
+  MAVEN_CLI_OPTS: "-B -ntp"
+  BASE_URL: "https://demoblaze.com/"
+
+test_playwright:
+  image: mcr.microsoft.com/playwright:focal   # Official Playwright Docker image with browsers pre‑installed
+  stage: test
+  services: []                               # No extra services needed
+  script:
+    - mvn $MAVEN_CLI_OPTS test              # Runs your tests via Maven
+  artifacts:
+    when: always
+    reports:
+      junit: target/surefire-reports/*.xml # Publish test results
+    paths:
+      - target/site                          # If you generate site reports
+    expire_in: 1 week
