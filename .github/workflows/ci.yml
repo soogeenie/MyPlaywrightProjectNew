@@ -10,7 +10,7 @@ jobs:
   test:
     # Use a matrix strategy to launch three parallel jobs
     strategy:
-      fail-fast: false
+      fail-fast: false  # <-- If one job fails, the other jobs will continue to run regardless
       matrix:
         browser: [chromium, firefox, webkit]
 
