@@ -19,10 +19,9 @@ public class PlaywrightTestSetup {
             default: bt = playwright.chromium();
         }
         browser = bt.launch(new BrowserType.LaunchOptions()
-                .setHeadless(Config.headless)
-                .setArgs(Arrays.asList("--start-maximized")));
+                .setHeadless(Config.headless));
         page = browser.newContext(new Browser.NewContextOptions()
-                .setViewportSize(null)).newPage();
+                .setViewportSize(1920, 1080)).newPage();
         return this;
     }
     public Page getPage(){return this.page;}
