@@ -1,4 +1,4 @@
-This is an example project for Playwrite on Java automation.
+This is an example project for Playwright on Java automation.
 
 ## Overview
 
