@@ -1,4 +1,4 @@
-package playwrightLessons.lesson4;
+package demostoreTestProject.utils;
 
 import com.microsoft.playwright.*;
 
@@ -11,20 +11,18 @@ public class PlaywrightTestSetup {
     private Page page;
 
     public PlaywrightTestSetup setup() {
-        this.playwright = Playwright.create();
-        this.browser = this.playwright.chromium().launch(new BrowserType.LaunchOptions()
-                .setHeadless(false)
+        playwright = Playwright.create();
+        browser = playwright.chromium().launch(new BrowserType.LaunchOptions()
+                .setHeadless(Config.headless)
                 .setArgs(Arrays.asList("--start-maximized")));
-        this.context = this.browser.newContext(new Browser.NewContextOptions()
-                .setViewportSize(null));
-        this.page = this.context.newPage();
+        page = browser.newContext(new Browser.NewContextOptions()
+                .setViewportSize(null)).newPage();
         return this;
     }
     public Page getPage(){return this.page;}
 
     public void tearDown() {
-        this.browser.close();
-        this.playwright.close();
+        browser.close();
+        playwright.close();
     }
-
 }
