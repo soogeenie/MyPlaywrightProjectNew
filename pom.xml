@@ -45,6 +45,7 @@
                 <version>3.5.3</version>
                 <configuration>
                     <alwaysGenerateSurefireReport>true</alwaysGenerateSurefireReport>
+                    <outputDirectory>${project.build.directory}/site</outputDirectory>
                 </configuration>
             </plugin>
         </plugins>
