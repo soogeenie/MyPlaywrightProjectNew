@@ -25,5 +25,5 @@ jobs:
           name: test-reports
           path: |
             target/surefire-reports/*.xml
-            target/site/*
+            target/reports/surefire.html
           retention-days: 7
