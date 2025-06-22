@@ -23,9 +23,11 @@ jobs:
       - name: Run Maven tests
         run: mvn ${{ secrets.MAVEN_CLI_OPTS }} test
 
-    artifacts:
-      when: always
-      paths:
-        - target/surefire-reports/*.xml
-        - target/site
-      expire_in: 1 week
+      - name: Upload test reports as artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-reports
+          path: |
+            target/surefire-reports/*.xml
+            target/site
+          retention-days: 7
