@@ -19,7 +19,8 @@ public abstract class BaseTest {
 
     @BeforeEach
     public void setUp() {
-        setup = new PlaywrightTestSetup().setup();
+        String browser = System.getProperty("browser", "chromium");
+        setup = new PlaywrightTestSetup().setup(browser);
         page = setup.getPage();
         page.navigate(Config.baseUrl);
 

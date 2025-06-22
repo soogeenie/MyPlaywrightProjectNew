@@ -10,9 +10,15 @@ public class PlaywrightTestSetup {
     private BrowserContext context;
     private Page page;
 
-    public PlaywrightTestSetup setup() {
+    public PlaywrightTestSetup setup(String browserType) {
         playwright = Playwright.create();
-        browser = playwright.chromium().launch(new BrowserType.LaunchOptions()
+        BrowserType bt;
+        switch (browserType.toLowerCase()) {
+            case "firefox": bt = playwright.firefox(); break;
+            case "webkit": bt = playwright.webkit(); break;
+            default: bt = playwright.chromium();
+        }
+        browser = bt.launch(new BrowserType.LaunchOptions()
                 .setHeadless(Config.headless)
                 .setArgs(Arrays.asList("--start-maximized")));
         page = browser.newContext(new Browser.NewContextOptions()

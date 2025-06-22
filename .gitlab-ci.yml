@@ -16,5 +16,5 @@ test_playwright:
     reports:
       junit: target/surefire-reports/*.xml # Publish test results
     paths:
-      - target/site                          # If you generate site reports
+      - target/reports/surefire.html
     expire_in: 1 week
