@@ -1,0 +1,31 @@
+name: CI Pipeline
+
+on:
+  push:
+    branches:
+      - lesson6
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    container:
+      image: mcr.microsoft.com/playwright/java:v1.52.0-noble
+      options: --user 1001
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Install Playwright browsers
+        run: |
+          npx playwright install --with-deps
+
+      - name: Run Maven tests
+        run: mvn ${{ secrets.MAVEN_CLI_OPTS }} test
+
+    artifacts:
+      when: always
+      paths:
+        - target/surefire-reports/*.xml
+        - target/site
+      expire_in: 1 week
