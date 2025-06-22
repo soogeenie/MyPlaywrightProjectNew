@@ -21,7 +21,7 @@ jobs:
 #          npx playwright install --with-deps
 
       - name: Run Maven tests
-        run: mvn ${{ secrets.MAVEN_CLI_OPTS }} test
+        run: mvn test
 
       - name: Upload test reports as artifacts
         uses: actions/upload-artifact@v4
