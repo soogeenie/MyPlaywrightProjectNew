@@ -16,10 +16,6 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-#      - name: Install Playwright browsers
-#        run: |
-#          npx playwright install --with-deps
-
       - name: Run Maven tests
         run: mvn surefire-report:report
 
@@ -29,5 +25,5 @@ jobs:
           name: test-reports
           path: |
             target/surefire-reports/*.xml
-            target/site
+            target/site/*
           retention-days: 7
