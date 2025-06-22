@@ -34,7 +34,7 @@ public abstract class BaseTest {
     }
 
     protected void addProductToCart(String productName){
-        home.clickProduct("Samsung galaxy s6");  // returns product page
+        home.clickProduct(productName);  // returns product page
         product.addToCart();  // returns product page
         product.openCart();// returns cart page
     }
