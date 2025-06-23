@@ -28,16 +28,7 @@ jobs:
 
       - name: Generate HTML report for ${{ matrix.browser }}
         if: always()
-        run: mvn surefire-report:report-only
-
-      - name: Report test results for ${{ matrix.browser }}
-        uses: dorny/test-reporter@v1
-        if: always()
-        with:
-           name: Maven Tests (${{ matrix.browser }})
-           path: target/surefire-reports/*.xml
-           reporter: java-junit
-           fail-on-error: true
+        run: mvn -B -ntp surefire-report:report-only
 
       - name: Upload test reports for ${{ matrix.browser }}
         uses: actions/upload-artifact@v4
