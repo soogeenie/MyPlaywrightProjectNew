@@ -4,7 +4,7 @@ on:
   workflow_dispatch: # <-- Allow manual triggering
   push:
     branches:
-      - multibrowser
+      - master
 
 jobs:
   test:
