@@ -2,8 +2,6 @@ package demostoreTestProject.utils;
 
 import com.microsoft.playwright.*;
 
-import java.util.Arrays;
-
 public class PlaywrightTestSetup {
     private Playwright playwright;
     private Browser browser;
@@ -19,7 +17,7 @@ public class PlaywrightTestSetup {
             default: bt = playwright.chromium();
         }
         browser = bt.launch(new BrowserType.LaunchOptions()
-                .setHeadless(Config.headless));
+                .setHeadless(Boolean.valueOf(System.getProperty("headless", "false"))));
         page = browser.newContext(new Browser.NewContextOptions()
                 .setViewportSize(1920, 1080)).newPage();
         return this;
