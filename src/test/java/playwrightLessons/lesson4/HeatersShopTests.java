@@ -13,10 +13,9 @@ public class HeatersShopTests extends BaseTest {
         //Fill INPUT WITH TEXT "Regency Renmark Wood Heater"
         page.getByRole(AriaRole.TEXTBOX, new Page.GetByRoleOptions().setName("Search")).fill("Regency Renmark Wood Heater");
         //CLICK SEARCH
-        page.locator(".searchsubmit");
-        page.pause();
+        page.locator(".searchsubmit").filter(new Locator.FilterOptions().setVisible(true)).click();
         //VERIFY LINK IS VISIBLE
-        assertThat(page.getByRole(AriaRole.LINK, new Page.GetByRoleOptions().setName("Regency Renmark Wood Heater")))
+        assertThat(page.getByText("Regency Renmark Wood Heater", new Page.GetByTextOptions().setExact(true)))
                 .isVisible();
     }
 }
