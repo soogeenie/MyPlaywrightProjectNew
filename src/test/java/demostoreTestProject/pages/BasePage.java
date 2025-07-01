@@ -15,7 +15,7 @@ public abstract class BasePage {
         return new CartPage(page);
     }
     public LoginPage goToLoginPage() {
-        page.locator("login2").click();
+        page.locator("#login2").click();
         return new LoginPage(page);
     }
 
