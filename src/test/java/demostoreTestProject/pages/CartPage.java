@@ -20,6 +20,6 @@ public class CartPage extends BasePage {
 
     public CartPage deleteFirstProduct() {
         page.getByRole(AriaRole.LINK, new Page.GetByRoleOptions().setName("Delete")).first().click();
-        return new CartPage(page);
+        return this;
     }
 }

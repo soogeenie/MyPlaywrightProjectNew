@@ -3,6 +3,7 @@ package demostoreTestProject.tests;
 import com.microsoft.playwright.Page;
 import demostoreTestProject.pages.CartPage;
 import demostoreTestProject.pages.HomePage;
+import demostoreTestProject.pages.LoginPage;
 import demostoreTestProject.pages.ProductPage;
 import demostoreTestProject.utils.Config;
 import demostoreTestProject.utils.PlaywrightTestSetup;
@@ -15,6 +16,7 @@ public abstract class BaseTest {
     HomePage home;
     ProductPage product;
     CartPage cart;
+    LoginPage login;
 
 
     @BeforeEach
@@ -26,6 +28,7 @@ public abstract class BaseTest {
         home = new HomePage(page);
         product = new ProductPage(page);
         cart = new CartPage(page);
+        login = new LoginPage(page);
     }
 
     @AfterEach
@@ -34,7 +37,7 @@ public abstract class BaseTest {
     }
 
     protected void addProductToCart(String productName){
-        home.clickProduct("Samsung galaxy s6");  // returns product page
+        home.clickProduct(productName);  // returns product page
         product.addToCart();  // returns product page
         product.openCart();// returns cart page
     }

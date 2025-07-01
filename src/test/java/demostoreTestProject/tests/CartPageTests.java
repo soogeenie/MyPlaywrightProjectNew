@@ -12,7 +12,6 @@ public class CartPageTests extends BaseTest {
     @Test
     public void verifyDeleteFromCart() {
         addProductToCart("Samsung galaxy s6");
-        cart.deleteFirstProduct();
-        cart.verifyTotalPrice("");
+        cart.deleteFirstProduct().verifyTotalPrice("");
     }
 }

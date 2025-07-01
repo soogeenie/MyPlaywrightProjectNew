@@ -14,6 +14,10 @@ public abstract class BasePage {
         page.locator("#cartur").click();
         return new CartPage(page);
     }
+    public LoginPage goToLoginPage() {
+        page.locator("login2").click();
+        return new LoginPage(page);
+    }
 
     public String getTitle() {
         return page.title();

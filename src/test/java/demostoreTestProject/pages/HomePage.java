@@ -8,11 +8,8 @@ import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertTha
 public class HomePage extends BasePage {
     private final Locator header = page.locator("#nava");
 
-    public HomePage(Page page) { super(page); }
-
-    public HomePage open(String url) {
-        page.navigate(url);
-        return this;
+    public HomePage(Page page) {
+        super(page);
     }
 
     public void verifyHeaderContains(String text) {

@@ -13,7 +13,7 @@ public class ProductPage extends BasePage {
     }
 
     public ProductPage verifyAddToCartIsVisible() {
-        assertThat(addToCartBtn).hasText("Add to cart");
+        assertThat(addToCartBtn).isVisible();
         return this;
     }
 
