@@ -1,19 +1,41 @@
-stages:
-  - test
+name: CI Pipeline
 
-test:
-  stage: test
-  image: mcr.microsoft.com/playwright/java:v1.52.0-noble
-  parallel:
-    matrix:
-      - BROWSER: ["chromium", "firefox", "webkit"]
-  script:
-    - echo "Running Maven tests on $BROWSER"
-    - mvn -B -ntp -Dbrowser=$BROWSER -Dheadless=true test
-    - mvn -B -ntp surefire-report:report-only
-  artifacts:
-    when: always
-    paths:
-      - target/surefire-reports/*.xml
-      - target/reports/surefire.html
-    expire_in: 7 days
+on:
+  workflow_dispatch: # <-- Allow manual triggering
+  push:
+    branches:
+      - master
+
+jobs:
+  test:
+    # Use a matrix strategy to launch three parallel jobs
+    strategy:
+      fail-fast: false  # <-- If one job fails, the other jobs will continue to run regardless
+      matrix:
+        browser: [chromium, firefox, webkit]
+
+    runs-on: ubuntu-latest
+    container:
+      image: mcr.microsoft.com/playwright/java:v1.52.0-noble
+      options: --user 1001
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Run Maven tests on ${{ matrix.browser }}
+        run: mvn -B -ntp -Dbrowser=${{ matrix.browser }} -Dheadless=true test
+
+      - name: Generate HTML report for ${{ matrix.browser }}
+        if: always()
+        run: mvn -B -ntp surefire-report:report-only
+
+      - name: Upload test reports for ${{ matrix.browser }}
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: test-reports-${{ matrix.browser }}
+          path: |
+            target/surefire-reports/*.xml
+            target/reports/surefire.html
+          retention-days: 7
