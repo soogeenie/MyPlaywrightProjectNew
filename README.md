@@ -1,6 +1,6 @@
 # MyPlaywrightProject 🚀
 
-**Example project for Java + Playwright end‑to‑end automation**
+**Example project for Java + Playwright end‑to‑end workflow automation**
 
 ---
 
