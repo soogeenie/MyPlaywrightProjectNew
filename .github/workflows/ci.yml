@@ -14,13 +14,9 @@ jobs:
       matrix:
         browser: [chromium, firefox, webkit]
 
-<<<<<<< HEAD
-    runs-on: ubuntu-latest
-=======
     # The workflow runs in a containerized environment
     runs-on: ubuntu-latest
     # Uses a Docker container with Playwright and Java pre-installed
->>>>>>> 04525eb (Initial commit with local changes)
     container:
       image: mcr.microsoft.com/playwright/java:v1.52.0-noble
       options: --user 1001
@@ -30,26 +26,19 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Run Maven tests on ${{ matrix.browser }}
-<<<<<<< HEAD
         run: mvn -B -ntp -Dbrowser=${{ matrix.browser }} -Dheadless=true test
 
       - name: Generate HTML report for ${{ matrix.browser }}
         if: always()
-=======
         run: mvn -B -ntp -Dbrowser=${{ matrix.browser }} -Dheadless=true test -Dsurefire.rerunFailingTestsCount=2
 
       - name: Generate HTML report for ${{ matrix.browser }}
         if: always() # <-- ensures reports are generated and uploaded even if tests fail
->>>>>>> 04525eb (Initial commit with local changes)
         run: mvn -B -ntp surefire-report:report-only
 
       - name: Upload test reports for ${{ matrix.browser }}
         uses: actions/upload-artifact@v4
-<<<<<<< HEAD
-        if: always()
-=======
         if: always() # <-- ensures reports are generated and uploaded even if tests fail
->>>>>>> 04525eb (Initial commit with local changes)
         with:
           name: test-reports-${{ matrix.browser }}
           path: |
