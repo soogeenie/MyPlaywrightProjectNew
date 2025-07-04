@@ -10,7 +10,7 @@ This project showcases:
 
 - **Maven** as the build tool
 - **Java 11** (LTS)
-- **Playwright 1.40.1** for browser automation
+- **Playwright 1.52.0** for browser automation
 - **JUnit 5** for test framework
 - **GitHub Actions** for CI/CD
 
