@@ -1,6 +1,10 @@
 # MyPlaywrightProject 🚀
 
+<<<<<<< HEAD
 **Example project for Java + Playwright end‑to‑end workflow automation**
+=======
+**Example project for Java + Playwright end‑to‑end automation**
+>>>>>>> 04525eb (Initial commit with local changes)
 
 ---
 
